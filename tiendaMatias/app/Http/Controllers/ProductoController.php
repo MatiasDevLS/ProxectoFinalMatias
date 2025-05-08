@@ -18,17 +18,10 @@ class ProductoController extends Controller
 
     public function Post(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'descripcion' => 'nullable|string',
-            'precio' => 'required|numeric|min:0',
-            // Agrega aquí más reglas de validación para otros campos
-        ]);
 
         Producto::create($request->all());
 
-        return redirect()->route('productos.index')
-                         ->with('success', 'Producto creado exitosamente.');
+        return 'Respuesta valida'; 
     }
 
 
