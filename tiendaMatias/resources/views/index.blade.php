@@ -9,10 +9,10 @@
 </head>
 <body>
     <div class="form">
-    <form action="inicio.php" method="post">
+    <form action="inicio" method="post">
 
         <p>Introduzca Sus Credenciales</p>
-        
+        @csrf
         <label for="email">Correo Electrónico:</label><br>
         <input  type="email" id="email" name="email"><br><br>
 
@@ -27,6 +27,7 @@
         <input type="checkbox" id="recordar" name="recordar" value="1">
         <label for="recordar">Recordar</label><br><br>
     </form>
+
     </div>
 </body>
 </html>
