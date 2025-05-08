@@ -21,6 +21,12 @@
                     <a class="nav-link" href="/gestionProductos">Gestion Productos</a>
                 </li>
                 <li class="nav-item active">
+                    <a class="nav-link" href="/listaTipo">Lista Tipos</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/gestionTipo">Gestion Tipos</a>
+                </li>
+                <li class="nav-item active">
                     <a class="nav-link" href="/usuarios">Lista Usuarios</a>
                 </li>
                 <li class="nav-item active">
@@ -28,7 +34,7 @@
                 </li>
 
             </ul>
-            <ul style="padding-left: 70%;">
+            <ul style="padding-left: 60%;">
             <li >
                     <a class="navbar-brand"  href="#">
                         <img href="C:\Users\Usuario\Documents\Laravel\tiendaMatias\public\imgs\logo.png" width="30" height="30" alt="">

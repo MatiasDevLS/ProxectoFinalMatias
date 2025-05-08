@@ -10,22 +10,17 @@ class TipoController extends Controller
     public function GetLista()
     {
         $tipos = Tipo::all();
-        return view('tipos.index', compact('tipos'));
+        return view('listaTipo', compact('tipos'));
     }
 
 
     public function Post(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required|string|max:255|unique:tipos,nombre',
-            'descripcion' => 'nullable|string',
-            // Agrega aquí más reglas de validación para otros campos
-        ]);
+
 
         Tipo::create($request->all());
 
-        return redirect()->route('tipos.index')
-                         ->with('success', 'Tipo creado exitosamente.');
+        return 'Creado con exito';
     }
 
 
