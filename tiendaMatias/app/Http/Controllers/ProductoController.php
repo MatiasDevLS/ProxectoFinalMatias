@@ -11,7 +11,7 @@ class ProductoController extends Controller
     public function GetLista()
     {
         $productos = Producto::all();
-        return view('productos.index', compact('productos'));
+        return view('listaProducto', compact('productos'));
     }
 
 

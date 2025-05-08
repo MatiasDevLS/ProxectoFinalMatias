@@ -33,7 +33,10 @@ Route::post('/inicio', function (Request $data) {
 });
 
 // Gets de listas
+Route::get('/listaProducto', [ProductoController::class, 'GetLista']);
 Route::get('/listaTipo', [TipoController::class, 'GetLista']);
+Route::get('/gestionProductos', [TipoController::class, 'GetLista']);
+
 
 // Post de creación
 
