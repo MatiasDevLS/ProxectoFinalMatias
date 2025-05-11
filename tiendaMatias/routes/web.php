@@ -11,10 +11,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-// Envia al usuario a la creación de productos
-Route::get('/gestionProductos', function () {
-    return view('registroProducto');
-});
 
 // Envia al usuario a la creación de tipo
 Route::get('/gestionTipo', function () {
@@ -32,13 +28,19 @@ Route::post('/inicio', function (Request $data) {
     return view('layouts.inicio');
 });
 
-// Gets de listas
+// Listas
 Route::get('/listaProducto', [ProductoController::class, 'GetLista']);
 Route::get('/listaTipo', [TipoController::class, 'GetLista']);
-Route::get('/gestionProductos', [TipoController::class, 'GetLista']);
 
 
-// Post de creación
+// Creaciones
+Route::get('/gestionProductos', [ProductoController::class, 'GetGestion']);
 
-Route::post('/gestionProductos', [ProductoController::class, 'Post']);
+
+
+//  Posts
 Route::post('/gestionTipo', [TipoController::class, 'Post']);
+Route::post('/gestionProductos', [ProductoController::class, 'Post']);
+
+// Deletes
+Route::delete('/listaProducto/{id}', [ProductoController::class, 'Delete']);

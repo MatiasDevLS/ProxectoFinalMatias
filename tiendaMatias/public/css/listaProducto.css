@@ -1,0 +1,14 @@
+.lista{
+    margin-left: 2%;
+    width: 70%;
+    font-family: Helvetica;
+    font-size: large;
+}
+
+.lista tr, .lista th{
+    padding-right: 20px;
+}
+.lista img{
+    height: 44px;
+    width: 44px;
+}

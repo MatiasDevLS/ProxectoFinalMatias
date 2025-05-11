@@ -32,7 +32,7 @@
             <tr>
                 <td>
                     <label for="tipo">Tipo:</label><br>
-                    <select type="text" id="tipo" name="tipo">
+                    <select type="text" id="tipo" name="idTipo">
                         @foreach ($tipos as $tipo)
                         <option value="{{$tipo->id}}">{{$tipo->tipo}}</option>
                         @endforeach

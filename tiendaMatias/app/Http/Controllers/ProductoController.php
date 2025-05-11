@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use App\Models\Tipo;
 
 class ProductoController extends Controller
 {
@@ -12,6 +13,12 @@ class ProductoController extends Controller
     {
         $productos = Producto::all();
         return view('listaProducto', compact('productos'));
+    }
+
+    public function GetGestion()
+    {
+        $tipos = Tipo::all();
+        return view('registroProducto', compact('tipos'));
     }
 
 
@@ -47,12 +54,14 @@ class ProductoController extends Controller
                          ->with('success', 'Producto actualizado exitosamente.');
     }
 
-    public function Delete(Producto $producto)
+    public function Delete(int $id)
     {
+        $producto = Producto::find($id);
         $producto->delete();
 
-        return redirect()->route('productos.index')
-                         ->with('success', 'Producto eliminado exitosamente.');
+
+        $productos = Producto::all();
+        return view('listaProducto', compact('productos'));
     }
 }
 
