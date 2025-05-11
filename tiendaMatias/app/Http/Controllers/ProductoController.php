@@ -20,6 +20,17 @@ class ProductoController extends Controller
         $tipos = Tipo::all();
         return view('registroProducto', compact('tipos'));
     }
+    
+
+    public function GetEditarData(int $id)
+    {
+        $producto = Producto::find($id);
+        $tipo = Tipo::find($producto->idTipo);
+        $tipos = Tipo::all();
+        return view('editarProducto', compact('tipos','tipo','producto'));
+    }
+    
+
 
 
 
@@ -39,19 +50,14 @@ class ProductoController extends Controller
 
 
 
-    public function Update(Request $request, Producto $producto)
+    public function Update(Producto $producto)
     {
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'descripcion' => 'nullable|string',
-            'precio' => 'required|numeric|min:0',
-            // Agrega aquí más reglas de validación para otros campos
-        ]);
 
-        $producto->update($request->all());
+        $producto->update();
+        $tipo = Tipo::find($producto->idTipo);
+        $tipos = Tipo::all();
 
-        return redirect()->route('productos.index')
-                         ->with('success', 'Producto actualizado exitosamente.');
+        return view('editarProducto', compact('tipos','tipo','producto'));
     }
 
     public function Delete(int $id)
