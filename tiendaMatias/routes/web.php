@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
@@ -12,18 +13,56 @@ Route::get('/', function () {
 });
 
 
-// Envia al usuario a la creación de tipo
-Route::get('/gestionTipo', function () {
-    return view('registroTipo');
-});
-
+//Producto 
 Route::get('/gestionProductos', function () {
-    return view('gestionProducto');
+    return view('Productos.gestionProducto');
 });
 
 Route::get('/editarProducto', function () {
-    return view('editarProducto');
+    return view('Productos.editarProducto');
 });
+
+Route::get('/listaProducto', [ProductoController::class, 'GetLista']);
+
+Route::get('/registroProducto', [ProductoController::class, 'GetGestion']);
+
+Route::post('/gestionProducto', [ProductoController::class, 'Post']);
+
+Route::post('/editarProducto/{id}', [ProductoController::class, 'GetEditarData']);
+
+Route::put('/editarProducto/{id}', [ProductoController::class, 'Update']);
+
+Route::delete('/listaProducto/{id}', [ProductoController::class, 'Delete']);
+
+
+
+// Tipo
+Route::get('/gestionTipo', function () {
+    return view('Tipos.gestionTipo');
+});
+
+Route::get('/editarTipo', function () {
+    return view('Tipos.editarTipo');
+});
+
+Route::get('/listaTipo', [TipoController::class, 'GetLista']);
+
+Route::get('/registroTipo', function () {
+    return view('Tipos.registroTipo');
+});
+
+Route::post('/gestionTipo', [TipoController::class, 'Post']);
+
+Route::post('/editarTipo/{id}', [TipoController::class, 'GetEditarData']);
+
+Route::put('/editarTipo/{id}', [TipoController::class, 'Update']);
+
+Route::delete('/listaTipo/{id}', [TipoController::class, 'Delete']);
+
+// Usuario
+Route::get('/listaUsuario', [TipoController::class, 'GetLista']);
+
+
 
 // Envia al usuario a la pantalla de inicio
 Route::post('/inicio', function (Request $data) {
@@ -34,24 +73,3 @@ Route::post('/inicio', function (Request $data) {
     return view('layouts.inicio');
 });
 
-// Listas
-Route::get('/listaProducto', [ProductoController::class, 'GetLista']);
-Route::get('/listaTipo', [TipoController::class, 'GetLista']);
-
-
-// Creaciones
-Route::get('/registroProducto', [ProductoController::class, 'GetGestion']);
-
-
-
-//  Posts
-Route::post('/gestionTipo', [TipoController::class, 'Post']);
-Route::post('/Creaciones', [ProductoController::class, 'Post']);
-
-Route::post('/editarProducto/{id}', [ProductoController::class, 'GetEditarData']);
-
-// Put
-Route::put('/editarProducto/{id}', [ProductoController::class, 'Update']);
-
-// Deletes
-Route::delete('/listaProducto/{id}', [ProductoController::class, 'Delete']);

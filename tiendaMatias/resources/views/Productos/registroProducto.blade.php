@@ -9,7 +9,7 @@
         </a>
     </div>
 <div class="form">
-    <form action="gestionProductos" method="post">
+    <form action="gestionProducto" method="post">
 
         <p>Introduzca Sus Credenciales</p>
         @csrf

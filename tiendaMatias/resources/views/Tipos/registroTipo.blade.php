@@ -1,6 +1,13 @@
 @extends('layouts.inicio')
 
 @section('contenido')
+        <div>
+        <a href="editarTipo">
+            <button>
+                Editar
+            </button>
+        </a>
+    </div>
 <div class="form">
     <form action="gestionTipo" method="post">
 

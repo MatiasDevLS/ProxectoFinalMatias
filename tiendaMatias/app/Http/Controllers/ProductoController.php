@@ -12,52 +12,42 @@ class ProductoController extends Controller
     public function GetLista()
     {
         $productos = Producto::all();
-        return view('listaProducto', compact('productos'));
+        return view('Productos.listaProducto', compact('productos'));
     }
 
     public function GetGestion()
     {
         $tipos = Tipo::all();
-        return view('registroProducto', compact('tipos'));
+        return view('Productos.registroProducto', compact('tipos'));
     }
-    
+
 
     public function GetEditarData(int $id)
     {
         $producto = Producto::find($id);
         $tipo = Tipo::find($producto->idTipo);
         $tipos = Tipo::all();
-        return view('editarProducto', compact('tipos','tipo','producto'));
+        return view('Productos.editarProducto', compact('tipos', 'tipo', 'producto'));
     }
-    
-
-
-
-
     public function Post(Request $request)
     {
 
         Producto::create($request->all());
 
-        return 'Respuesta valida'; 
+        return 'Respuesta valida';
     }
 
-
-    public function Get(Producto $producto)
-    {
-        return view('productos.show', compact('producto'));
-    }
-
-
-
-    public function Update(Producto $producto)
+    public function Update(Request $request, $id)
     {
 
-        $producto->update();
+        $producto = Producto::findOrFail($id); 
+        $producto->update($request->all());
+
+
         $tipo = Tipo::find($producto->idTipo);
         $tipos = Tipo::all();
 
-        return view('editarProducto', compact('tipos','tipo','producto'));
+        return view('Productos.editarProducto', compact('tipos', 'tipo', 'producto'));
     }
 
     public function Delete(int $id)
@@ -67,7 +57,6 @@ class ProductoController extends Controller
 
 
         $productos = Producto::all();
-        return view('listaProducto', compact('productos'));
+        return view('Productos.listaProducto', compact('productos'));
     }
 }
-
