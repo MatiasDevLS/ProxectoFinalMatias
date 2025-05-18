@@ -5,7 +5,17 @@
     <table>
     @foreach ($usuarios as $usuario)
         <tr>
-            <td>{{$usuario->password}}</td>
+            <td>{{$usuario->id}}</td>
+            <td>{{$usuario->nombre}}</td>
+            <td>{{$usuario->apellidos}}</td>
+            <td>{{$usuario->correo}}</td>
+            @if($usuario->rol == 1)
+            <td>Trabajador</td>
+            
+            @else
+            <td>Admin</td>
+            @endif
+            
         </tr>
     @endforeach
     </table>

@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -20,6 +21,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/gestionProductos">Gestion Productos</a>
                 </li>
+                @if ( session('usuario_rol')==2 )
                 <li class="nav-item active">
                     <a class="nav-link" href="/listaTipo">Lista Tipos</a>
                 </li>
@@ -32,12 +34,13 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/gestionUsuario">Gestion Usuarios</a>
                 </li>
+                @endif
 
             </ul>
             <ul style="padding-left: 60%;">
             <li >
-                    <a class="navbar-brand"  href="#">
-                        <img href="C:\Users\Usuario\Documents\Laravel\tiendaMatias\public\imgs\logo.png" width="30" height="30" alt="">
+                    <a class="navbar-brand"  href="/editarPerfil">
+                        <img src="{{ session('usuario_imagen') }}" width="30" height="30" alt="">
                     </a>
                 </li>
             </ul>

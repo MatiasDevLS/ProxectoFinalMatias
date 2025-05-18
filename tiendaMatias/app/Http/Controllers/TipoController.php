@@ -9,6 +9,11 @@ class TipoController extends Controller
 {
     public function GetLista()
     {
+        $check = $this->comprobarInicio();
+        if ($check) {
+            return $check;
+        }
+
         $tipos = Tipo::all();
         return view('Tipos.listaTipo', compact('tipos'));
     }
@@ -20,17 +25,22 @@ class TipoController extends Controller
         return 'Creado con exito';
     }
 
-      public function GetEditarData(int $id)
+    public function GetEditarData(int $id)
     {
+        $check = $this->comprobarInicio();
+        if ($check) {
+            return $check;
+        }
+
         $tipo = Tipo::find($id);
 
         return view('Tipos.editarTipo', compact('tipo'));
     }
 
-  public function Update(Request $request, $id)
+    public function Update(Request $request, $id)
     {
 
-        $tipo = Tipo::findOrFail($id); 
+        $tipo = Tipo::findOrFail($id);
         $tipo->update($request->all());
 
         return view('Tipos.editarTipo', compact('tipo'));

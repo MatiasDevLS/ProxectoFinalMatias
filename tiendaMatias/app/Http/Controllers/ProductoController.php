@@ -11,12 +11,21 @@ class ProductoController extends Controller
 
     public function GetLista()
     {
+        $check = $this->comprobarInicio();
+        if ($check) {
+            return $check;
+        }
         $productos = Producto::all();
         return view('Productos.listaProducto', compact('productos'));
     }
 
     public function GetGestion()
     {
+        $check = $this->comprobarInicio();
+        if ($check) {
+            return $check;
+        }
+
         $tipos = Tipo::all();
         return view('Productos.registroProducto', compact('tipos'));
     }
@@ -24,6 +33,10 @@ class ProductoController extends Controller
 
     public function GetEditarData(int $id)
     {
+        $check = $this->comprobarInicio();
+        if ($check) {
+            return $check;
+        }
         $producto = Producto::find($id);
         $tipo = Tipo::find($producto->idTipo);
         $tipos = Tipo::all();
@@ -40,7 +53,7 @@ class ProductoController extends Controller
     public function Update(Request $request, $id)
     {
 
-        $producto = Producto::findOrFail($id); 
+        $producto = Producto::findOrFail($id);
         $producto->update($request->all());
 
 

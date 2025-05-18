@@ -70,6 +70,10 @@ Route::get('/editarUsuario', function () {
     return view('Usuarios.editarUsuario');
 });
 
+Route::get('/editarPerfil', function () {
+    return view('Usuarios.editarPerfil');
+});
+
 Route::get('/listaUsuario', [UsuarioController::class, 'GetLista']);
 
 Route::get('/registroUsuario', function () {
@@ -84,13 +88,9 @@ Route::put('/editarUsuario/{id}', [UsuarioController::class, 'Update']);
 
 Route::delete('/listaUsuario/{id}', [UsuarioController::class, 'Delete']);
 
+Route::post('/login', [UsuarioController::class, 'Login']);
 
-// Envia al usuario a la pantalla de inicio
-Route::post('/inicio', function (Request $data) {
-    $email = $data->email;
-    $usuario = $data->usuario;
-    $password = $data->password;
+Route::get('/editarPerfil', [UsuarioController::class, 'GetPerfil']);
 
-    return view('layouts.inicio');
-});
+
 
