@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\TipoController;
+use App\Http\Controllers\UsuarioController;
+use App\Models\Usuario;
 
 // Rutas de movimiento
 
@@ -60,8 +62,27 @@ Route::put('/editarTipo/{id}', [TipoController::class, 'Update']);
 Route::delete('/listaTipo/{id}', [TipoController::class, 'Delete']);
 
 // Usuario
-Route::get('/listaUsuario', [TipoController::class, 'GetLista']);
+Route::get('/gestionUsuario', function () {
+    return view('Usuarios.gestionUsuario');
+});
 
+Route::get('/editarUsuario', function () {
+    return view('Usuarios.editarUsuario');
+});
+
+Route::get('/listaUsuario', [UsuarioController::class, 'GetLista']);
+
+Route::get('/registroUsuario', function () {
+    return view('Usuarios.registroUsuario');
+});
+
+Route::post('/gestionUsuario', [UsuarioController::class, 'Post']);
+
+Route::post('/editarUsuario/{id}', [UsuarioController::class, 'GetEditarData']);
+
+Route::put('/editarUsuario/{id}', [UsuarioController::class, 'Update']);
+
+Route::delete('/listaUsuario/{id}', [UsuarioController::class, 'Delete']);
 
 
 // Envia al usuario a la pantalla de inicio

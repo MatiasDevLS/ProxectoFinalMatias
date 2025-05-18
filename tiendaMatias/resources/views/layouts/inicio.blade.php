@@ -27,10 +27,10 @@
                     <a class="nav-link" href="/gestionTipo">Gestion Tipos</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/usuarios">Lista Usuarios</a>
+                    <a class="nav-link" href="/listaUsuario">Lista Usuarios</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/gestionUsuarios">Gestion Usuarios</a>
+                    <a class="nav-link" href="/gestionUsuario">Gestion Usuarios</a>
                 </li>
 
             </ul>

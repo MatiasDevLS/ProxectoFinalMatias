@@ -4,45 +4,59 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tipo;
+use App\Models\Usuario;
+use Illuminate\Support\Facades\Hash;
 
-class TipoController extends Controller
+
+class UsuarioController extends Controller
 {
     public function GetLista()
     {
-        $tipos = Tipo::all();
-        return view('Tipos.listaTipo', compact('tipos'));
+        $usuarios = Usuario::all();
+        return view('Usuarios.listaUsuario', compact('usuarios'));
     }
 
 
     public function Post(Request $request)
     {
-        Tipo::create($request->all());
+        Usuario::create($request->all());
         return 'Creado con exito';
     }
 
-      public function GetEditarData(int $id)
+    public function GetEditarData(int $id)
     {
-        $tipo = Tipo::find($id);
+        $usuario = Usuario::find($id);
 
-        return view('Tipos.editarTipo', compact('tipo'));
+        return view('Usuarios.editarUsuario', compact('usuario'));
     }
 
-  public function Update(Request $request, $id)
+    public function Update(Request $request, $id)
     {
+        $usuario = Usuario::findOrFail($id);
 
-        $tipo = Tipo::findOrFail($id); 
-        $tipo->update($request->all());
+        $data = $request->all();
 
-        return view('Tipos.editarTipo', compact('tipo'));
+
+        // Encriptar la contraseña solo si fue enviada
+        if (!empty($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        } else {
+            unset($data['password']); // No actualizar si está vacía
+        }
+
+        // Actualizar con los datos filtrados
+        $usuario->update($data);
+
+        return 'Actualizado con éxito';
     }
 
     public function Delete(int $id)
     {
-        $tipo = Tipo::find($id);
-        $tipo->delete();
+        $usuario = Usuario::find($id);
+        $usuario->delete();
 
 
-        $tipos = Tipo::all();
-        return view('Tipos.listaTipo', compact('tipos'));
+        $usuarios = Usuario::all();
+        return view('Usuarios.listaUsuario', compact('usuarios'));
     }
 }

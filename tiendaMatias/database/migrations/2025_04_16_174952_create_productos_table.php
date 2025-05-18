@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('apellidos',100);
             $table->string('correo',100);
             $table->string('password',255);
+            $table->string('rol',40);
+            $table->longText('imagenUrl');
             $table->timestamps();
         });
 

@@ -5,7 +5,7 @@
     <table>
     @foreach ($usuarios as $usuario)
         <tr>
-            <td>{{$usuario->usuario}}</td>
+            <td>{{$usuario->password}}</td>
         </tr>
     @endforeach
     </table>
