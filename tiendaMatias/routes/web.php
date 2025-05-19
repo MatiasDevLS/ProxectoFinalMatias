@@ -94,3 +94,6 @@ Route::get('/editarPerfil', [UsuarioController::class, 'GetPerfil']);
 
 
 
+// Exportaciones
+
+Route::get('/exportarTodo', [ProductoController::class,'ExportarTodo']);
