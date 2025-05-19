@@ -72,4 +72,18 @@ class ProductoController extends Controller
         $productos = Producto::all();
         return view('Productos.listaProducto', compact('productos'));
     }
+
+
+    public function ExportarTodo()
+    {
+        return $productos = Producto::all();
+    }
+    
+    public function ExportarProducto(int $id)
+    {
+
+        $producto = Producto::find($id);
+
+        return $producto;
+    }
 }
