@@ -1,0 +1,25 @@
+.contenedor{
+    height: 100%;
+    width: 100%;
+}
+.contenedorCarta {
+    height: 170px;
+    max-width: 200px;
+
+    p {
+        visibility: hidden;
+        color: #465945;
+        font-weight: bold;
+        font-family: Helvetica;
+    }
+
+}
+
+
+
+.contenedorCarta:hover {
+    p {
+        visibility: visible;
+    }
+
+}

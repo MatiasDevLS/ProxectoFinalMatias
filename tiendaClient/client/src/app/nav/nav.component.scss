@@ -1,0 +1,14 @@
+.nav {
+    background-color: #465945;
+    height: 75px;
+    display: flex;
+    box-shadow: 1px 1px 1px rgb(20, 18, 18);
+
+    li {
+        list-style-type: none;
+    }
+
+    ul {
+        width: 100%;
+    }
+}

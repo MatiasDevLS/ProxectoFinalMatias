@@ -1,0 +1,7 @@
+@if(productos){
+    <div class="contenedorInicio row">
+    @for (producto of productos; track $index) {
+        <div style="margin-bottom: 5%;" class="col-3"><app-carta-producto [id]="producto.id" [nombre]="producto.nombre" [imagenUrl]="producto.imagenUrl"></app-carta-producto></div>
+    }
+    </div>
+}
