@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\TipoController;
 use App\Http\Controllers\UsuarioController;
+use App\Models\Tipo;
 use App\Models\Usuario;
 
 // Rutas de movimiento
@@ -96,6 +97,10 @@ Route::get('/editarPerfil', [UsuarioController::class, 'GetPerfil']);
 
 // Exportaciones
 
-Route::get('/exportarTodo', [ProductoController::class,'ExportarTodo']);
+Route::get('/exportarTodoProducto', [ProductoController::class,'ExportarTodo']);
 Route::get('/exportarProducto/{id}', [ProductoController::class,'ExportarProducto']);
 Route::get('/exportarAleatorio/{id}', [ProductoController::class,'ExportarAleatorio']);
+
+
+Route::get('/exportarTodoTipo', [TipoController::class,'ExportarTodo']);
+Route::get('/exportarTipo/{id}', [TipoController::class,'ExportarProducto']);

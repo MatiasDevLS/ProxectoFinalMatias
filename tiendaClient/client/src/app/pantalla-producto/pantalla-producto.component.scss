@@ -34,16 +34,35 @@
             }
         }
 
-        .descripcion{
+        .descripcion {
             font-family: Helvetica;
             font-size: medium;
             color: #465945;
-            height: 70%;
+            height: 94%;
         }
 
-        .precio{
-            
+        .precio {
+            font-family: Helvetica;
+            font-size: xx-large;
+            color: #465945;
+         
         }
+
+        .boton {
+
+            button {
+                height: 55px;
+                width: 200px;
+            }
+        }
+        .carrito {
+            padding-left: 10px;
+            button {
+                height: 55px;
+                width: 85px;
+            }
+        }
+
 
     }
 

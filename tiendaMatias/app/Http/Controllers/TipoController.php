@@ -55,4 +55,22 @@ class TipoController extends Controller
         $tipos = Tipo::all();
         return view('Tipos.listaTipo', compact('tipos'));
     }
+
+
+
+        public function ExportarTodo()
+    {
+        return $tipos = Tipo::all();
+    }
+
+    public function ExportarProducto(int $id)
+    {
+
+        $tipo = Tipo::find($id);
+
+        return $tipo;
+    }
+
+
+   
 }

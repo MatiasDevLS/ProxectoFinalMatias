@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
 import { NavComponent } from "./nav/nav.component";
+import { BarraMenuComponent } from './barra-menu/barra-menu.component';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,8 @@ import { NavComponent } from "./nav/nav.component";
     CommonModule,
     HttpClientModule,
     RouterOutlet,
-    NavComponent
+    NavComponent,
+    BarraMenuComponent
 ]
 })
 export class AppComponent  {
