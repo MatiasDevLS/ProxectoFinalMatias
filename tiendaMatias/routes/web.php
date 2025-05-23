@@ -97,3 +97,5 @@ Route::get('/editarPerfil', [UsuarioController::class, 'GetPerfil']);
 // Exportaciones
 
 Route::get('/exportarTodo', [ProductoController::class,'ExportarTodo']);
+Route::get('/exportarProducto/{id}', [ProductoController::class,'ExportarProducto']);
+Route::get('/exportarAleatorio/{id}', [ProductoController::class,'ExportarAleatorio']);

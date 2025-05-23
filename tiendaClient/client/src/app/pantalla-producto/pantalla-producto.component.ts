@@ -1,11 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ProductosService } from '../services/ProductoService/productos.service';
+import { ActivatedRoute } from '@angular/router';
+import { CartaProductoComponent } from '../carta-producto/carta-producto.component';
 
 @Component({
   selector: 'app-pantalla-producto',
-  imports: [],
+  imports: [CartaProductoComponent],
   templateUrl: './pantalla-producto.component.html',
   styleUrl: './pantalla-producto.component.scss'
 })
-export class PantallaProductoComponent {
-
+export class PantallaProductoComponent implements OnInit {
+  producto!:any
+  productosAleatorios!:any[]
+  
+  constructor(public productosService: ProductosService, private route: ActivatedRoute) { }
+  
+    ngOnInit(): void {
+      let productoId = this.route.snapshot.paramMap.get('id');
+      this.productosService.getProducto(productoId!).subscribe({
+        next: (respond: any) => this.producto = respond
+      });
+      this.productosService.getProductosAleatorios(productoId!).subscribe({
+        next: (respond: any) => this.productosAleatorios = respond
+      });
+    }
 }

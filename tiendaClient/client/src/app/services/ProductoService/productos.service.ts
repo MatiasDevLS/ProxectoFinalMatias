@@ -11,4 +11,12 @@ export class ProductosService {
   public getProductos(){
     return this.http.get('http://127.0.0.1:8000/exportarTodo')
   }
+
+  public getProducto(id:string){
+    return this.http.get('http://127.0.0.1:8000/exportarProducto/'+id)
+  }
+
+  public getProductosAleatorios(id:string){
+    return this.http.get('http://127.0.0.1:8000/exportarAleatorio/'+id)
+  }
 }

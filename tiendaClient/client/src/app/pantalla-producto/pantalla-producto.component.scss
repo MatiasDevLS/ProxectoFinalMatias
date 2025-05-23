@@ -1,0 +1,57 @@
+.contenedor {
+    margin-left: 10%;
+    margin-right: 20%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.tabla {
+    display: flex;
+    font-family: Helvetica;
+
+    img {
+        height: 600px;
+        width: 600px;
+        box-shadow: 1px 1px 1px #f5f5dc;
+
+    }
+
+    .contenedorContenido {
+        padding-left: 55px;
+        height: 400px;
+
+        .titulo {
+            font-weight: bold;
+            padding-bottom: 15%;
+            font-size: large;
+            color: #465945;
+
+            .categoria {
+                font-style: italic;
+                font-size: small;
+                color: gray;
+                font-weight: normal;
+            }
+        }
+
+        .descripcion{
+            font-family: Helvetica;
+            font-size: medium;
+            color: #465945;
+            height: 70%;
+        }
+
+        .precio{
+            
+        }
+
+    }
+
+
+}
+
+
+
+.productos {
+    margin-left: 5%;
+}

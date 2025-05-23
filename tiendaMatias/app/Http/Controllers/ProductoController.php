@@ -78,12 +78,21 @@ class ProductoController extends Controller
     {
         return $productos = Producto::all();
     }
-    
+
     public function ExportarProducto(int $id)
     {
 
         $producto = Producto::find($id);
 
         return $producto;
+    }
+
+
+    public function ExportarAleatorio($id)
+    {
+        return $productos = Producto::where('id', '!=', $id)
+            ->inRandomOrder()
+            ->take(4)
+            ->get();
     }
 }
