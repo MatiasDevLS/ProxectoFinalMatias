@@ -9,6 +9,7 @@ import { TiposService } from '../services/TiposService/tipos.service';
 })
 export class BarraMenuComponent implements OnInit {
   tipos!:any[]
+  visible:boolean = false
   constructor(public tiposService:TiposService){
 
   }
@@ -18,5 +19,13 @@ export class BarraMenuComponent implements OnInit {
         this.tipos=result
       }
     })
+  }
+
+  abrir(){
+    this.visible=true
+  }
+
+   cerrar(){
+    this.visible=false
   }
 }

@@ -1,4 +1,36 @@
 .barra{
     height: 100%;
     background-color: #465945;
+    overflow: auto;
+}
+
+.lista{
+
+    color: white;
+    font-size: large;
+    font-family: Helvetica;
+    font-style: normal;
+      text-decoration: none;
+
+}
+
+.lista:hover{
+    font-weight: bold;
+    color: #f5f5dc;
+}
+
+.titulo{
+    margin-top: 5%;
+    color: white;
+    font-size: larger;
+    font-family: Helvetica;
+    font-style: normal;
+    text-align: center;
+}
+
+hr{
+    color: white;
+}
+svg{
+    cursor: pointer;
 }

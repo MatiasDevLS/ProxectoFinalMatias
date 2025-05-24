@@ -22,7 +22,7 @@ class TipoController extends Controller
     public function Post(Request $request)
     {
         Tipo::create($request->all());
-        return 'Creado con exito';
+        return  view('Tipos.registroTipo');;
     }
 
     public function GetEditarData(int $id)

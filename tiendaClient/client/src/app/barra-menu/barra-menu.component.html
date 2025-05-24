@@ -1,13 +1,30 @@
-<div style="float: left;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-caret-left"
+@if(visible==true)
+{
+<div >
+  <svg style="float: left;" (click)="cerrar()" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-caret-right"
     viewBox="0 0 16 16">
     <path
-      d="M10 12.796V3.204L4.519 8zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753" />
-  </svg></div>
+      d="M6 12.796V3.204L11.481 8zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753" />
+  </svg>
+</div>
+
 <div class="barra">
-  <ul style="list-style: none;">
-    @for (tipo of tipos; track $index!=8) 
+  <p class="titulo">Categorías</p>
+  <hr>
+  <ul style="list-style: none; margin-top: 4%;">
+    <li><a class="lista" href="/inicio">Inicio</a></li>
+    @for (tipo of tipos; track $index!=8)
     {
-      <li><a href="/tipo/{{tipo.id}}">{{tipo.tipo}}</a></li>
+    <li><a class="lista" href="/categoria/{{tipo.id}}">{{tipo.tipo}}</a></li>
     }
   </ul>
 </div>
+}
+@else {
+
+<div  style="text-align: right;"><svg (click)="abrir()" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
+    class="bi bi-caret-left" viewBox="0 0 16 16">
+    <path
+      d="M10 12.796V3.204L4.519 8zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753" />
+  </svg></div>
+}
