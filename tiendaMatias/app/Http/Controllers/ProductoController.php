@@ -95,4 +95,9 @@ class ProductoController extends Controller
             ->take(4)
             ->get();
     }
+
+       public function ExportarProductosCategoria($id)
+    {
+         return $productos = Producto::where('idTipo', $id)->get();;
+    }
 }

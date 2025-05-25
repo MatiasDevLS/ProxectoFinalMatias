@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductosService } from '../services/ProductoService/productos.service';
 import { CartaProductoComponent } from '../carta-producto/carta-producto.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-categoria-productos',
@@ -11,10 +12,11 @@ import { CartaProductoComponent } from '../carta-producto/carta-producto.compone
 export class CategoriaProductosComponent {
   productos: any;
 
-  constructor(public productosService: ProductosService) { }
+  constructor(public productosService: ProductosService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.productosService.getProductos().subscribe({
+    let categoriaId = this.route.snapshot.paramMap.get('id');
+    this.productosService.getProductosCategoria(categoriaId!).subscribe({
       next: (respond: any) => this.productos = respond
     });
   }

@@ -19,4 +19,8 @@ export class ProductosService {
   public getProductosAleatorios(id:string){
     return this.http.get('http://127.0.0.1:8000/exportarAleatorio/'+id)
   }
+
+    public getProductosCategoria(id:string){
+    return this.http.get('http://127.0.0.1:8000/exportarProductosCategoria/'+id)
+  }
 }

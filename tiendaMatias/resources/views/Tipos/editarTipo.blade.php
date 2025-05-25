@@ -19,7 +19,7 @@
 @if(isset($tipo))
 <div class="form">
         <form action="/editarTipo/{{ $tipo->id }}" method="post">
-        <p>Registrar Tipo</p>
+        <p>Registrar Tipo: {{ $tipo->tipo}}</p>
         @csrf
         @method('PUT')
         <label for="tipo">Nombre:</label><br>

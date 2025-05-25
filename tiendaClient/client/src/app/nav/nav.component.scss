@@ -1,14 +1,12 @@
 .nav {
     background-color: #465945;
-    height: 75px;
+    height: 70px;
     display: flex;
     box-shadow: 1px 1px 1px rgb(20, 18, 18);
 
-    li {
-        list-style-type: none;
+    .contenedorNav{
+        padding-left: 10px;
     }
 
-    ul {
-        width: 100%;
-    }
+   
 }

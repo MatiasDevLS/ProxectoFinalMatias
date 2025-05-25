@@ -3,7 +3,7 @@
 @section('contenido')
 
 
- <img src="{{$usuario->imagenUrl }}" width="30" height="30" alt="">
+ <img src="{{$usuario->imagenUrl }}" width="450" height="300" alt="">
 <form method="POST" action="/editarUsuario/{{ $usuario->id }}">
     @csrf
     @method('PUT') 

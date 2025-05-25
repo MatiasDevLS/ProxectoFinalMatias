@@ -5,6 +5,7 @@
     <table>
     @foreach ($usuarios as $usuario)
         <tr>
+            <td><img style="width: 33px;" src="{{$usuario->imagenUrl}}"></td>
             <td>{{$usuario->id}}</td>
             <td>{{$usuario->nombre}}</td>
             <td>{{$usuario->apellidos}}</td>

@@ -11,7 +11,6 @@
 <div class="form">
     <form action="gestionProducto" method="post">
 
-        <p>Introduzca Sus Credenciales</p>
         @csrf
         <table>
             <thead>

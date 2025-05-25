@@ -1,37 +1,38 @@
 @extends('layouts.inicio')
 
 @section('contenido')
-<div >
+<div>
     <table>
-    @foreach ($tipos as $tipo)
+        @foreach ($tipos as $tipo)
         <tr>
+            <td>{{$tipo->id}}</td>
             <td>{{$tipo->tipo}}</td>
         </tr>
-    @endforeach
+        @endforeach
     </table>
-    
+
 
 </div>
-    <div>
-        <form id="eliminarForm" action="" method="post">
-            <label for="id">Id:</label><br>
-            <input type="number" id="id" name="id"><br><br>
-            @csrf
-            @method('DELETE')
-            <input type="submit" value="Eliminar">
-        </form>
+<div>
+    <form id="eliminarForm" action="" method="post">
+        <label for="id">Id:</label><br>
+        <input type="number" id="id" name="id"><br><br>
+        @csrf
+        @method('DELETE')
+        <input type="submit" value="Eliminar">
+    </form>
 
 
-        <script>
-            document.getElementById('eliminarForm').addEventListener('submit', function(event) {
-                event.preventDefault(); 
-                const id = document.getElementById('id').value;
-                const url = `/listaTipo/${id}`; 
-                this.action = url; 
-                this.submit();
-            });
-        </script>
-        
-    </div>
+    <script>
+        document.getElementById('eliminarForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const id = document.getElementById('id').value;
+            const url = `/listaTipo/${id}`;
+            this.action = url;
+            this.submit();
+        });
+    </script>
+
+</div>
 
 @endsection

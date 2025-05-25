@@ -100,6 +100,8 @@ Route::get('/editarPerfil', [UsuarioController::class, 'GetPerfil']);
 Route::get('/exportarTodoProducto', [ProductoController::class,'ExportarTodo']);
 Route::get('/exportarProducto/{id}', [ProductoController::class,'ExportarProducto']);
 Route::get('/exportarAleatorio/{id}', [ProductoController::class,'ExportarAleatorio']);
+Route::get('/exportarProductosCategoria/{id}', [ProductoController::class,'ExportarProductosCategoria']);
+
 
 
 Route::get('/exportarTodoTipo', [TipoController::class,'ExportarTodo']);

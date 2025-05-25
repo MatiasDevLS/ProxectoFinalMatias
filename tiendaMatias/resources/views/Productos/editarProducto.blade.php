@@ -21,11 +21,9 @@
     <form action="/editarProducto/{{ $producto->id }}" method="post">
         @csrf
         @method('PUT')
-        <p>Introduzca Sus Credenciales</p>
-
         <table>
             <thead>
-                <tr><th><p>Registro de Producto</p></th></tr>
+                <tr><th><p>Editar el Producto: {{ $producto->nombre}}</p></th></tr>
             </thead>
             <tr>
                 <td>
