@@ -1,24 +1,22 @@
-.fondo {
-    background-color: #f5f5dc;
-    height: 70vh;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 5%;
-    box-shadow: 1px 1px 1px gray;
-    vertical-align: middle;
-    display: flex;
+.fondo{
+        background-color: #f5f5dc;
+        height: 70vh;
+        margin-left: 20%;
+        margin-right: 20%;
+        margin-top: 5%;
+        box-shadow: 1px 1px 1px gray;
+        vertical-align:middle;
+        display: flex;
 
-    .productos {
-        margin: 2%;
-        width: 60%;
+        .productos{
+            margin: 2%;
+            width: 60%;
 
-        .lineas {
-            display: flex;
+            .lineas{
+                display: flex;
 
-            .precioProducto {
                 
             }
+            
         }
-
-    }
 }
