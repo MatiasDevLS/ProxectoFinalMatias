@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ProductosService } from '../services/ProductoService/productos.service';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -14,7 +15,7 @@ export class NavComponent {
 
   buscador = new FormControl(); 
 
-  constructor(public productosService: ProductosService) { }
+  constructor(public productosService: ProductosService, private router: Router) { }
 
   ngOnInit(): void {
     this.productosService.getProductos().subscribe({
@@ -24,6 +25,10 @@ export class NavComponent {
 
   mostrarNombre(producto: any): string {
     return producto && producto.nombre ? producto.nombre : '';
+  }
+
+  entrarCarrito(){
+      this.router.navigateByUrl('/carrito')
   }
 
 }
