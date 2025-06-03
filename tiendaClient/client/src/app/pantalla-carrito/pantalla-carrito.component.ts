@@ -29,6 +29,7 @@ export class PantallaCarritoComponent implements OnInit{
     arrayKeys.forEach((key: string) => {
       this.productosService.getProducto(key).subscribe({
         next: (producto:Producto)=> {
+          producto.cantidad = 1
           this.productos.push(producto)
         }
       })

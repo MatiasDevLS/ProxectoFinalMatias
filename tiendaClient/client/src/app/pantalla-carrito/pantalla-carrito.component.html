@@ -3,27 +3,26 @@
     <div class="productos">
             <table style="width: 100%;">
                 @for (producto of productos; track $index) {
-                <tr>
-  <td style="width: 90%;">Producto</td>
-  <td>{{ producto.precio! * cantidadSeleccionada }}</td>
-  <td>
-    <select [(ngModel)]="cantidadSeleccionada">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
-  </td>
-</tr>
-<tr>
-  <td colspan="2"><hr /></td>
-</tr>
+ <tr>
+          <td style="width: 90%;">{{ producto.nombre }}</td> <td>{{ producto.precio! * producto.cantidad! }}€</td>
+          <td>
+            <select [(ngModel)]="producto.cantidad">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><hr /></td>
+        </tr>
             }
             </table>
  
