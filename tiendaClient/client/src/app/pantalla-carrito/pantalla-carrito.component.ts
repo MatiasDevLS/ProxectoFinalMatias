@@ -79,6 +79,8 @@ export class PantallaCarritoComponent implements OnInit{
  eliminarCarrito(id: number) {
 
       var ids:any = window.localStorage.getItem('keysCarrito')?.split(',')
+
+      console.log("ids "+ids)
       var nuevoCarrito:any = []
 
       ids.forEach((idF: number) => {
@@ -87,9 +89,12 @@ export class PantallaCarritoComponent implements OnInit{
         }
       });
 
-      nuevoCarrito = nuevoCarrito?.toString()
+  
+
+      console.log("nuevoCarrito "+nuevoCarrito)
+
       window.localStorage.setItem('keysCarrito', nuevoCarrito.toString())
-      window.location.reload()
+      // window.location.reload()
       
     
 

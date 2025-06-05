@@ -4,9 +4,19 @@
     display: flex;
     box-shadow: 1px 1px 1px rgb(20, 18, 18);
 
-    .contenedorNav{
+    .contenedorNav {
         padding-left: 10px;
     }
 
-   
+    .lupa {
+        border-radius: 10px;
+        border: 1px solid gray;
+        box-shadow: 1px 1px 1px black;
+    }
+
+    .carritoBoton{
+            box-shadow: 1px 1px 1px black;
+    }
+
+
 }
