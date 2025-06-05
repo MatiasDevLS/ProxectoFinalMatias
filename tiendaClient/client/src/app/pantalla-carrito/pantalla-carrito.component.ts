@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Producto } from '../Models/Producto';
 import { ProductosService } from '../services/ProductoService/productos.service';
 import { FormsModule } from '@angular/forms';
@@ -13,6 +13,8 @@ export class PantallaCarritoComponent implements OnInit{
   productos: Producto[] = []
   size: number = 0;
   cantidadSeleccionada: number = 1;
+  total: number = 0;
+
   constructor(private productosService: ProductosService){
 
   }
@@ -29,11 +31,68 @@ export class PantallaCarritoComponent implements OnInit{
     arrayKeys.forEach((key: string) => {
       this.productosService.getProducto(key).subscribe({
         next: (producto:Producto)=> {
-          producto.cantidad = 1
+          producto.cantidad = 5
+          this.total+=Number(producto.precio!)*producto.cantidad
           this.productos.push(producto)
         }
       })
     });
+  }
+
+  // Use ngOnChanges to recalculate total if productos or their quantities change
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['productos']) {
+      this.calculateTotal();
+    }
+  }
+
+  calculateTotal(): void {
+    this.total = this.productos.reduce((sum, producto) => {
+      return sum + (producto.precio! * producto.cantidad!);
+    }, 0);
+  }
+
+  onQuantityChange(): void {
+    this.calculateTotal();
+  }
+
+   formatearNumero(input: string, decimales: number = 2): string {
+  // Eliminar comas inglesas (separadores de miles)
+  const sinComas = input.replace(/,/g, '');
+
+  // Convertir a número flotante
+  const numero = parseFloat(sinComas);
+
+  // Validar si es un número válido
+  if (isNaN(numero)) {
+    console.warn('Valor inválido:', input);
+    return '';
+  }
+
+  // Formatear al estilo español
+  return numero.toLocaleString('es-ES', {
+    minimumFractionDigits: decimales,
+    maximumFractionDigits: decimales,
+  });
+}
+
+ eliminarCarrito(id: number) {
+
+      var ids:any = window.localStorage.getItem('keysCarrito')?.split(',')
+      var nuevoCarrito:any = []
+
+      ids.forEach((idF: number) => {
+        if (idF != id){
+          nuevoCarrito.push(idF.toString())
+        }
+      });
+
+      nuevoCarrito = nuevoCarrito?.toString()
+      window.localStorage.setItem('keysCarrito', nuevoCarrito.toString())
+      window.location.reload()
+      
+    
+
   }
 
 

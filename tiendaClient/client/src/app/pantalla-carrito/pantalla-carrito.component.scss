@@ -1,26 +1,59 @@
-.fondo{
-        background-color: #f5f5dc;
-        height: 70vh;
-        margin-left: 20%;
-        margin-right: 20%;
-        margin-top: 5%;
+.fondo {
+    background-color: #f5f5dc;
+    height: 70vh;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 5%;
+    box-shadow: 1px 1px 1px gray;
+    vertical-align: middle;
+    position: relative;
+    font-family: Helvetica;
+    overflow-y: scroll;
+    /* Es crucial para que el hijo absoluto se posicione con respecto a él */
+
+
+
+    .productos {
+        padding: 30px;
+
+        .lineas {
+            display: flex;
+
+
+        }
+
+    }
+
+    .precioTotal {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #465945;
+        color: white;
+        font-family: Helvetica;
         box-shadow: 1px 1px 1px gray;
-        vertical-align:middle;
-        display: flex;
 
-        .productos{
-            margin: 2%;
-            width: 60%;
+        padding: 10px;
+        text-align: center;
+    }
 
-            .lineas{
-                display: flex;
+    .botonSelect{
+        border: 1px solid #465945;
 
-                
-            }
-            
-        }
+        
+    }
 
-        .botones{
-            margin-top: 3%;
-        }
+    .multiplicacion{
+        font-weight: bold;
+        color: #465945;
+    }
+
+    .botonBorrar:hover{
+        cursor: pointer;
+    }
+
+
+
+
 }

@@ -28,6 +28,7 @@ export class PantallaProductoComponent implements OnInit {
   addCarrito(id: number) {
     if (window.localStorage.getItem('keysCarrito') != null) {
       var ids:any = window.localStorage.getItem('keysCarrito')?.split(',')
+      if (ids.includes(id.toString())) return;
       ids?.push(id.toString())
       ids = ids?.toString()
       window.localStorage.setItem('keysCarrito', ids.toString())
