@@ -2,41 +2,47 @@ import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Producto } from '../Models/Producto';
 import { ProductosService } from '../services/ProductoService/productos.service';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pantalla-carrito',
-  imports: [FormsModule ],
+  imports: [FormsModule,CommonModule],
   templateUrl: './pantalla-carrito.component.html',
   styleUrl: './pantalla-carrito.component.scss'
 })
-export class PantallaCarritoComponent implements OnInit{
+export class PantallaCarritoComponent implements OnInit {
   productos: Producto[] = []
   size: number = 0;
   cantidadSeleccionada: number = 1;
   total: number = 0;
+  pantallaError:boolean = false
 
-  constructor(private productosService: ProductosService){
+  constructor(private productosService: ProductosService) {
 
   }
 
   ngOnInit(): void {
-    var keys:string = localStorage.getItem('keysCarrito')!
-    keys = JSON.stringify(keys)
-    keys = keys.replace('"','')
-    keys = keys.replace('"','')
+    var keys: string = localStorage.getItem('keysCarrito')!
+    if (keys != null && keys != '') {
+      keys = JSON.stringify(keys)
+      keys = keys.replace('"', '')
+      keys = keys.replace('"', '')
 
-    let arrayKeys = keys.split(',')
+      let arrayKeys = keys.split(',')
 
-    this.size = arrayKeys.length
-    arrayKeys.forEach((key: string) => {
-      this.productosService.getProducto(key).subscribe({
-        next: (producto:Producto)=> {
-          producto.cantidad = 5
-          this.total+=Number(producto.precio!)*producto.cantidad
-          this.productos.push(producto)
-        }
-      })
-    });
+      this.size = arrayKeys.length
+      arrayKeys.forEach((key: string) => {
+        this.productosService.getProducto(key).subscribe({
+          next: (producto: Producto) => {
+            producto.cantidad = 5
+            this.total += Number(producto.precio!) * producto.cantidad
+            this.productos.push(producto)
+          }
+        })
+      });
+    }
+    else this.pantallaError = true
+
   }
 
   // Use ngOnChanges to recalculate total if productos or their quantities change
@@ -56,47 +62,47 @@ export class PantallaCarritoComponent implements OnInit{
     this.calculateTotal();
   }
 
-   formatearNumero(input: string, decimales: number = 2): string {
-  // Eliminar comas inglesas (separadores de miles)
-  const sinComas = input.replace(/,/g, '');
+  formatearNumero(input: string, decimales: number = 2): string {
+    // Eliminar comas inglesas (separadores de miles)
+    const sinComas = input.replace(/,/g, '');
 
-  // Convertir a número flotante
-  const numero = parseFloat(sinComas);
+    // Convertir a número flotante
+    const numero = parseFloat(sinComas);
 
-  // Validar si es un número válido
-  if (isNaN(numero)) {
-    console.warn('Valor inválido:', input);
-    return '';
+    // Validar si es un número válido
+    if (isNaN(numero)) {
+      console.warn('Valor inválido:', input);
+      return '';
+    }
+
+    // Formatear al estilo español
+    return numero.toLocaleString('es-ES', {
+      minimumFractionDigits: decimales,
+      maximumFractionDigits: decimales,
+    });
   }
 
-  // Formatear al estilo español
-  return numero.toLocaleString('es-ES', {
-    minimumFractionDigits: decimales,
-    maximumFractionDigits: decimales,
-  });
-}
+  eliminarCarrito(id: number) {
 
- eliminarCarrito(id: number) {
+    var ids: any = window.localStorage.getItem('keysCarrito')?.split(',')
 
-      var ids:any = window.localStorage.getItem('keysCarrito')?.split(',')
+    console.log("ids " + ids)
+    var nuevoCarrito: any = []
 
-      console.log("ids "+ids)
-      var nuevoCarrito:any = []
+    ids.forEach((idF: number) => {
+      if (idF != id) {
+        nuevoCarrito.push(idF.toString())
+      }
+    });
 
-      ids.forEach((idF: number) => {
-        if (idF != id){
-          nuevoCarrito.push(idF.toString())
-        }
-      });
 
-  
 
-      console.log("nuevoCarrito "+nuevoCarrito)
+    console.log("nuevoCarrito " + nuevoCarrito)
 
-      window.localStorage.setItem('keysCarrito', nuevoCarrito.toString())
-      // window.location.reload()
-      
-    
+    window.localStorage.setItem('keysCarrito', nuevoCarrito.toString())
+    window.location.reload()
+
+
 
   }
 
