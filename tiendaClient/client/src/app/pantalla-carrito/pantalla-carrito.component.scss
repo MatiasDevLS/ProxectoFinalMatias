@@ -70,3 +70,25 @@
      .enlace:hover{
         font-weight: bold;
     }
+
+    .cabecera{
+        width: 100%;
+        background-color: #465945;
+        color: white;
+        font-family: Helvetica;
+        box-shadow: 1px 1px 1px gray;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .botonPago{
+        background-color: #f5f5dc;
+        color: #465945;
+        box-shadow: 1px 1px 1px black;
+    }
+
+    .botonPago:hover{
+        background-color: #465945;
+        color: #f5f5dc;
+    }

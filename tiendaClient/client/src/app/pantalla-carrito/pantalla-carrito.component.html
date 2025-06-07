@@ -1,5 +1,9 @@
 @if(this.productos.length == size){
 <div class="fondo" *ngIf="!pantallaError">
+      <div class="cabecera">
+      <div><h3>Carrito</h3></div>
+      <div><button type="button" class="btn botonPago">Proceder a la compra</button></div>
+    </div>
   <div class="productos" >
     <table style="width: 100%;">
       @for (producto of productos; track $index) {

@@ -29,7 +29,7 @@ export class PantallaCarritoComponent implements OnInit {
       keys = keys.replace('"', '')
 
       let arrayKeys = keys.split(',')
-
+      console.log(arrayKeys)
       this.size = arrayKeys.length
       arrayKeys.forEach((key: string) => {
         this.productosService.getProducto(key).subscribe({
@@ -40,6 +40,7 @@ export class PantallaCarritoComponent implements OnInit {
           }
         })
       });
+      
     }
     else this.pantallaError = true
 
@@ -96,10 +97,9 @@ export class PantallaCarritoComponent implements OnInit {
     });
 
 
-
-    console.log("nuevoCarrito " + nuevoCarrito)
-
+    if (nuevoCarrito.length >0)
     window.localStorage.setItem('keysCarrito', nuevoCarrito.toString())
+    else window.localStorage.removeItem('keysCarrito')
     window.location.reload()
 
 
