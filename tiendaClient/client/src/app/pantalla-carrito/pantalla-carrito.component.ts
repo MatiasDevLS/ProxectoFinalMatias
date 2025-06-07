@@ -3,10 +3,13 @@ import { Producto } from '../Models/Producto';
 import { ProductosService } from '../services/ProductoService/productos.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ModalCompraComponent } from '../modal-compra/modal-compra.component';
+import { Dialog, DialogRef } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-pantalla-carrito',
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule, MatDialogModule ],
   templateUrl: './pantalla-carrito.component.html',
   styleUrl: './pantalla-carrito.component.scss'
 })
@@ -16,8 +19,9 @@ export class PantallaCarritoComponent implements OnInit {
   cantidadSeleccionada: number = 1;
   total: number = 0;
   pantallaError:boolean = false
+  
 
-  constructor(private productosService: ProductosService) {
+  constructor(private productosService: ProductosService, private dialog:Dialog) {
 
   }
 
@@ -104,6 +108,13 @@ export class PantallaCarritoComponent implements OnInit {
 
 
 
+  }
+
+  pagar(){
+    let dialogRef = this.dialog.open(ModalCompraComponent, {
+  height: '400px',
+  width: '600px',
+    });
   }
 
 
