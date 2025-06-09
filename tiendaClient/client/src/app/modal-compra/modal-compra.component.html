@@ -1,19 +1,78 @@
-<!-- <div class="fondo">
-    <div class="datos form-group">
-        <form>
-            <input type="text" name="nombre">
-            <input type="number" name="tarjeta">
-            <input type="date" name="fecha">
-            <input type="number" name="cvv">
-        </form>
+<div class="fondo">
+    @if (!cargando){
+    <div class="titulo" mat-dialog-title>Estado: <span class="paso">@if(!confirmarEstado){Ingrese Datos}@else if (confirmarEstado) {Confirme Datos}</span></div>
+    <mat-dialog-content>
+        <div class="fondo">
+            <div class="datos form-group" *ngIf="!confirmarEstado">
+                <form [formGroup]="formGroup">
+                     <div>
+                    <div class="tarjeta">
+                        <label for="tarjeta">Número de la tarjeta<span class="obligatorio">*</span></label>
+                        <input class="form-control" type="text" maxlength="9"  name="tarjeta" placeholder="1234 5678 9101 1112" formControlName="tarjeta">
+                    </div>
+                        <div class="subDatos">
+                        <div class="fecha">
+                            <label for="fecha">Fecha de caducidad<span class="obligatorio">*</span></label>
+                            <input class="form-control" type="date" name="fecha" formControlName="fecha">
+                        </div>
+                        <div class="cvv">
+                            <label for="cvv">CVV<span class="obligatorio">*</span></label>
+                            <input class="form-control" type="text" inputmode="numeric" name="cvv" [maxLength]="3" placeholder="123" formControlName="cvv">
+                        </div>
+                        </div>
+                        <div class="nombre">
+                        <label for="nombre">Titular de la tarjeta<span class="obligatorio">*</span></label>
+                        <input class="form-control" type="text" name="nombre" placeholder="Nombre Apellido Apellido" formControlName="nombre">
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="confirmacion" *ngIf="confirmarEstado">
+                
+                <div class="tarjetaFisica">
+                    <div class="espacio"><b>Titular</b><br> {{datos.nombre}}</div>
+                    <div class="espacio"><b>Número de la tarjeta <br></b>{{datos.tarjeta}}</div>
+                    <div class="datosTarjeta">
+                    <div><b>CVV</b><br> {{datos.cvv}}</div>
+                    <div><b>Fecha de caducidad</b><br> {{datos.fecha}}</div>
+                    </div>
+                </div>
+                <div class="precioFisico">
+                    <div><b>Pago total</b></div>
+                    <div class="espacioPrecio"><span class="precio">{{data.totalPagar}}</span>€</div>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <div style="display: flex; width: 100%;" >
+    <mat-dialog-actions align="start" style="width: 45%;">
+        <button [disabled]="formGroup.invalid"   (click)="confirmar()"   type="button" class="btn boton">@if(!confirmarEstado){Siguiente}@else if (confirmarEstado) {Atrás}</button>
+    </mat-dialog-actions>
+        <mat-dialog-actions align="end" style="width: 45%;" >
+        <button *ngIf="confirmarEstado"   (click)="comprar()"   type="button" class="btn botonCompra">Comprar</button>
+    </mat-dialog-actions></div>
+    }
+    @else {
+        <div>
+    <div class="titulo" mat-dialog-title>Estado: <span class="paso">@if(!mensajeFinalizado){Procesando Compra}@else if (mensajeFinalizado) {Compra Procesada}</span></div>
+    <mat-dialog-content>
+        <div class="fondo">
+            <div class="contenedor-estado-pedido">
+  <div *ngIf="cargando && !mensajeFinalizado" class="cargando-container">
+    <mat-spinner color="primary" diameter="50"></mat-spinner>
+    <p>Procesando tu pedido...</p>
+
     </div>
-</div> -->
-<div clas="fondo">
-<h2 mat-dialog-title>Delete all elements?</h2>
-<mat-dialog-content>This will delete all elements that are currently on this page and cannot be undone.</mat-dialog-content>
-<mat-dialog-actions>
-  <button matButton mat-dialog-close>Cancel</button>
-  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
-  <button matButton [mat-dialog-close]="true">Delete</button>
-</mat-dialog-actions>
+
+  <div *ngIf="mensajeFinalizado" class="finalizado-container">
+    <mat-icon class="done-icon">check_circle</mat-icon> <h2>¡Pedido finalizado!</h2>
+    <p>Gracias por tu compra.</p>
+  </div>
+</div>
+        </div>   
+    </mat-dialog-content>
+        </div>
+    }
 </div>

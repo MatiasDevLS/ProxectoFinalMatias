@@ -3,7 +3,7 @@ import { Producto } from '../Models/Producto';
 import { ProductosService } from '../services/ProductoService/productos.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ModalCompraComponent } from '../modal-compra/modal-compra.component';
 import { Dialog, DialogRef } from '@angular/cdk/dialog';
 
@@ -21,7 +21,7 @@ export class PantallaCarritoComponent implements OnInit {
   pantallaError:boolean = false
   
 
-  constructor(private productosService: ProductosService, private dialog:Dialog) {
+  constructor(private productosService: ProductosService, private dialog:MatDialog) {
 
   }
 
@@ -111,9 +111,12 @@ export class PantallaCarritoComponent implements OnInit {
   }
 
   pagar(){
+    console.log(this.total)
     let dialogRef = this.dialog.open(ModalCompraComponent, {
-  height: '400px',
-  width: '600px',
+  height: 'auto',
+  width: '50%',
+  data: { totalPagar: this.total }
+  
     });
   }
 

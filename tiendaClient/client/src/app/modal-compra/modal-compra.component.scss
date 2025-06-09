@@ -1,3 +1,147 @@
 .fondo{
     background-color: #f5f5dc;
+    font-family: Helvetica;
+    .titulo{
+        background-color: #465945;
+        color: white;
+        font-size: x-large;
+        padding: 10px;
+    }
+
+    .datos{
+        padding: 15px;
+    }
+
+    .subDatos{
+        gap: 20px;
+        display: flex;
+        width: 100%;
+    }
+
+    .fecha{
+        width: 100%;
+    }
+    .cvv{
+        width: 100%;
+    }
+
+    .tarjeta,.fecha,.cvv,.nombre{
+        margin-bottom: 2%;
+    }
+
+    label{
+        padding-left: 10px;
+    }
+
+    .paso{
+        color: yellow;
+    }
+
+    .obligatorio{
+        color: red;
+        padding-left: 2px;
+    }
+
+    .boton{
+        background-color: #465945;
+        color: white;
+    }
+
+    .boton:hover{
+        background-color: #ebebcee1;
+        color: black;
+    }
+
+  
+    .confirmacion{
+        display: flex;
+        gap: 20px;
+    }
+    .datosTarjeta{
+        display: flex;
+        gap: 15px;
+    }
+    .tarjetaFisica{
+        padding: 15px;
+        width: 55%;
+
+    }
+
+    .precioFisico{
+        padding: 15px;
+        width: 40%;
+    }
+
+    .precio{
+        font-weight: bold;
+        color: green;
+        font-size: x-large;
+    }
+
+    .espacio{
+    margin-bottom: 2%;
+
+    }
+
+     .espacioPrecio{
+    margin-top: 2%;
+
+    }
+
+     .botonCompra{
+        background-color: green;
+        color: white;
+    }
+
+    .botonCompra:hover{
+       background-color: yellowgreen;
+    }
+
+    .contenedor-estado-pedido {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px; /* Ajusta la altura según necesites */
+  text-align: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.cargando-container,
+.finalizado-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Espacio entre el ícono/spinner y el texto */
+}
+
+/* Estilos para el ícono de "finalizado" */
+.done-icon {
+  font-size: 70px; /* Tamaño más grande para el ícono */
+  width: 70px;
+  height: 70px;
+  color: green; /* Color verde para indicar éxito */
+}
+
+/* Estilos para el ícono de recarga (si usas MatIcon en lugar de MatSpinner) */
+.reload-icon {
+  font-size: 50px;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite; /* Animación de giro */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 5px;
+}
+
+p {
+  color: #666;
+}
 }
