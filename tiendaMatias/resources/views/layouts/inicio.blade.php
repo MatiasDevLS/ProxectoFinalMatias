@@ -11,30 +11,41 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav style="padding: 10px;" class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="dropdown" style="margin-right: 3%;">
+  <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Productos
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/listaProducto">Lista Productos</a></li>
+    <li><a class="dropdown-item" href="/editarProducto">Editar Producto</a></li>
+    <li><a class="dropdown-item" href="/registroProducto">Añadir Producto</a></li>
+  </ul>
+</div>
+@if ( session('usuario_rol')==1 )
+<div class="dropdown" style="margin-right: 3%;">
+  <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Tipos
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/listaTipo">Lista Tipos</a></li>
+    <li><a class="dropdown-item" href="/editarTipo">Editar Tipo</a></li>
+    <li><a class="dropdown-item" href="/registroTipo">Añadir Tipo</a></li>
+  </ul>
+</div>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/listaProducto">Lista Productos</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/gestionProductos">Gestion Productos</a>
-                </li>
-                @if ( session('usuario_rol')==2 )
-                <li class="nav-item active">
-                    <a class="nav-link" href="/listaTipo">Lista Tipos</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/gestionTipo">Gestion Tipos</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/listaUsuario">Lista Usuarios</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/gestionUsuario">Gestion Usuarios</a>
-                </li>
-                @endif
+<div class="dropdown">
+  <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Usuarios
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/listaUsuario">Lista Usuarios</a></li>
+    <li><a class="dropdown-item" href="/editarUsuario">Editar Usuario</a></li>
+    <li><a class="dropdown-item" href="/registroUsuario">Añadir Usuario</a></li>
+  </ul>
+</div>
+ @endif
+
 
             </ul>
             <ul style="padding-left: 60%;">

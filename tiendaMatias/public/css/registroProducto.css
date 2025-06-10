@@ -1,0 +1,19 @@
+.contenedor{
+    display: flex;
+    margin-top:2%;
+    justify-content: center; 
+    align-items: center; 
+}
+table{
+    border-collapse: separate; /* Asegura que los bordes estén separados (es el valor por defecto) */
+    border-spacing: 15px; 
+     box-shadow: 1px 1px 1px 1px black;
+}
+
+textarea{
+    width: 100%;
+}
+
+.btn:hover{
+    background-color: rgb(85, 84, 84);
+}
