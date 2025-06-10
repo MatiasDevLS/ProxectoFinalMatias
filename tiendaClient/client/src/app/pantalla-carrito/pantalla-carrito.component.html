@@ -12,7 +12,7 @@
         <td class="multiplicacion">{{formatearNumero((producto.precio! * producto.cantidad!).toString()) }}€</td>
         <td style="padding-left: 10px;">
           <select [(ngModel)]="producto.cantidad" (ngModelChange)="onQuantityChange()" class="botonSelect">
-            <option value="5">6</option>
+            <option value="6">6</option>
             <option value="10">12</option>
             <option value="15">18</option>
             <option value="20">24</option>

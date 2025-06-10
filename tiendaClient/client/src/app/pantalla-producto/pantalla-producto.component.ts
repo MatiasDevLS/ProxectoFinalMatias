@@ -43,17 +43,19 @@ export class PantallaProductoComponent implements OnInit {
 
     if (window.localStorage.getItem('keysCarrito') != null) {
       var ids:any = window.localStorage.getItem('keysCarrito')?.split(',')
-      if (ids.includes(id.toString())) return;
+      if (!ids.includes(id.toString())) {
       ids?.push(id.toString())
       ids = ids?.toString()
       window.localStorage.setItem('keysCarrito', ids.toString())
-    this.router.navigateByUrl('/carrito');
+      }
+  
   }
     else
     {
       window.localStorage.setItem('keysCarrito', id.toString())
-      this.router.navigateByUrl('/carrito');
+      console.log("hola")
     }
+    this.router.navigateByUrl('/carrito');
   }
       
 

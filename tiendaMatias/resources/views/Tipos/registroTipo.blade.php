@@ -1,26 +1,23 @@
 @extends('layouts.inicio')
 
 @section('contenido')
-        <div>
-        <a href="editarTipo">
-            <button>
-                Editar
-            </button>
-        </a>
-    </div>
+<link rel="stylesheet" href="{{ asset('css/registroTipo.css') }}">
+<div class="contenedor">
+
 <div class="form">
     <form action="gestionTipo" method="post">
 
-        <p>Registrar Tipo</p>
+        <p><b>Registro de Tipo</b></p>
         @csrf
 
         <label for="tipo">Nombre:</label><br>
         <input type="text" id="tipo" name="tipo"><br><br>
 
+        <button type="button" class="btn btn-dark">Registrar</button>
 
-        <input type="submit" value="Registrar">
 
     </form>
 
+</div>
 </div>
 @endsection
