@@ -13,7 +13,7 @@
         <label for="tipo">Nombre:</label><br>
         <input type="text" id="tipo" name="tipo"><br><br>
 
-        <button type="button" class="btn btn-dark">Registrar</button>
+        <button type="submit" class="btn btn-dark">Registrar</button>
 
 
     </form>

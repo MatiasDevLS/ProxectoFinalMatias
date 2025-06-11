@@ -55,7 +55,7 @@
 
                 </tr>
                 <tr>
-                    <td><button type="button" class="btn btn-dark">Registrar</button></td>
+                    <td><button type="submit" class="btn btn-dark">Registrar</button></td>
                 </tr>
 
 

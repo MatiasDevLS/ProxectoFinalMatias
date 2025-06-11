@@ -36,3 +36,9 @@ textarea{
     color: black;
 }
 
+.contenedorImagen{
+    display: flex;
+     justify-content: center; 
+    align-items: center; 
+}
+

@@ -1,3 +1,10 @@
+.contenedorId{
+    display: flex;
+    margin-top:2%;
+    justify-content:center; 
+    align-items:center; 
+}
+
 .contenedor{
     display: flex;
     margin-top:2%;
@@ -14,3 +21,15 @@ form{
     padding: 25px;
      box-shadow: 1px 1px 1px 1px black;
 }
+
+.btnBuscar{
+    background-color: white;
+    color: black;
+}
+#editarForm{
+    background-color: black;
+    padding: 15px;
+    color: white;
+    box-shadow: 1px 1px 1px gray;
+}
+
