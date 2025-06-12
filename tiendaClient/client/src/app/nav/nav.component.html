@@ -1,10 +1,10 @@
 <div class="nav">
 
-    <div style="padding-top: 15px;"><span class="logo"></span></div>
-    <div style="padding-left: 15%;padding-top: 15px;">
-        <div>
+    <div><img style="height: 45px; width: 55px;" src="assets/favicon.jpg"></div>
+    <div class="contenedorBuscador">
+        <div style="width: 100%;">
             <div class="custom-wrapper-example" matAutocompleteOrigin #origin="matAutocompleteOrigin">
-                <input style="width: 1300px;" matInput [formControl]="buscador" [matAutocomplete]="auto"
+                <input class="buscador" matInput [formControl]="buscador" [matAutocomplete]="auto"
                     [matAutocompleteConnectedTo]="origin">
             </div>
 
@@ -14,8 +14,7 @@
                 }
             </mat-autocomplete>
         </div>
-    </div>
-    <div style="padding-left: 1%;padding-top: 15px;">
+            <div>
         <a href="producto/{{buscador.value!.id}}">
         <button class="lupa"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
                 viewBox="0 0 16 16">
@@ -24,9 +23,11 @@
             </svg></button></a>
 
     </div>
+    </div>
 
 
-    <div style="padding-left: 10%;padding-top: 15px;" class="carrito contenedorNav"><button type="button"
+
+    <div  class="carrito contenedorNav"><button type="button"
             class="btn btn-light carritoBoton" (click)="entrarCarrito()"><svg xmlns="http://www.w3.org/2000/svg" width="16"
                 height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                 <path
