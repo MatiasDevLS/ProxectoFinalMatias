@@ -13,6 +13,7 @@ export class PantallaInicioComponent {
 
   constructor(public productosService: ProductosService) { }
 
+  // Se obtienen todos los productos
   ngOnInit(): void {
     this.productosService.getProductos().subscribe({
       next: (respond: any) => this.productos = respond

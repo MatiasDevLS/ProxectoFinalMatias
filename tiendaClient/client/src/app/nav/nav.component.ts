@@ -27,6 +27,7 @@ export class NavComponent {
     private router: Router 
   ) { }
 
+  // Obtiene todos los productos para el buscador
   ngOnInit(): void {
    
     this.productosService.getProductos().subscribe({
@@ -60,7 +61,7 @@ export class NavComponent {
     this.router.navigateByUrl('/carrito');
   }
 
-
+  // Filtra los valores a partir del valor introducido
   private _filter(value: string): Producto[] {
     const filterValue = value.toLowerCase(); // Convertir a minúsculas para una búsqueda insensible a mayúsculas/minúsculas
 

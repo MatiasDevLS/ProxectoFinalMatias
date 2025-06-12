@@ -30,7 +30,7 @@ class ProductoDto {
         $this->tipoNombre = $tipoNombre;
     }
 
-  
+    // Método que inicializa al DTO de forma mas rápida y dinámica
     public static function fromProducto(\App\Models\Producto $producto, string $tipoNombre): self
     {
         return new self(

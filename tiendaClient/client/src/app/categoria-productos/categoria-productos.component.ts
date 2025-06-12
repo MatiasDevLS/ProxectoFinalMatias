@@ -14,6 +14,7 @@ export class CategoriaProductosComponent {
 
   constructor(public productosService: ProductosService, private route: ActivatedRoute) { }
 
+  // Obtiene todos los productos del mismo tipo
   ngOnInit(): void {
     let categoriaId = this.route.snapshot.paramMap.get('id');
     this.productosService.getProductosCategoria(categoriaId!).subscribe({

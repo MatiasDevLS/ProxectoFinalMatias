@@ -9,7 +9,7 @@ import { Dialog, DialogRef } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-pantalla-carrito',
-  imports: [FormsModule,CommonModule, MatDialogModule ],
+  imports: [FormsModule, CommonModule, MatDialogModule],
   templateUrl: './pantalla-carrito.component.html',
   styleUrl: './pantalla-carrito.component.scss'
 })
@@ -18,13 +18,14 @@ export class PantallaCarritoComponent implements OnInit {
   size: number = 0;
   cantidadSeleccionada: number = 1;
   total: number = 0;
-  pantallaError:boolean = false
-  
+  pantallaError: boolean = false
 
-  constructor(private productosService: ProductosService, private dialog:MatDialog) {
+
+  constructor(private productosService: ProductosService, private dialog: MatDialog) {
 
   }
 
+  // Se limpia y se transforma el string del carrito a un array y se inicializa en el formulario
   ngOnInit(): void {
     var keys: string = localStorage.getItem('keysCarrito')!
     if (keys != null && keys != '') {
@@ -44,29 +45,31 @@ export class PantallaCarritoComponent implements OnInit {
           }
         })
       });
-      
+
     }
     else this.pantallaError = true
 
   }
 
-  // Use ngOnChanges to recalculate total if productos or their quantities change
+  // Cada cambio actualiza el total
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['productos']) {
-      this.calculateTotal();
+      this.calcularTotal();
     }
   }
 
-  calculateTotal(): void {
+  // Calcula el total de los productos
+  calcularTotal(): void {
     this.total = this.productos.reduce((sum, producto) => {
       return sum + (producto.precio! * producto.cantidad!);
     }, 0);
   }
 
+  // Cada vez que se cambia un valor activa el cal
   onQuantityChange(): void {
-    this.calculateTotal();
+    this.calcularTotal();
   }
-
+  // Convierte el número float que está en formato inglés a formato español
   formatearNumero(input: string, decimales: number = 2): string {
     // Eliminar comas inglesas (separadores de miles)
     const sinComas = input.replace(/,/g, '');
@@ -87,6 +90,7 @@ export class PantallaCarritoComponent implements OnInit {
     });
   }
 
+  // Convierte de nuevo el localStorage en array, busca y elimina el id pasado
   eliminarCarrito(id: number) {
 
     var ids: any = window.localStorage.getItem('keysCarrito')?.split(',')
@@ -101,8 +105,8 @@ export class PantallaCarritoComponent implements OnInit {
     });
 
 
-    if (nuevoCarrito.length >0)
-    window.localStorage.setItem('keysCarrito', nuevoCarrito.toString())
+    if (nuevoCarrito.length > 0)
+      window.localStorage.setItem('keysCarrito', nuevoCarrito.toString())
     else window.localStorage.removeItem('keysCarrito')
     window.location.reload()
 
@@ -110,13 +114,14 @@ export class PantallaCarritoComponent implements OnInit {
 
   }
 
-  pagar(){
-    console.log(this.total)
+  // Abre el modal de pago
+  pagar() {
+
     let dialogRef = this.dialog.open(ModalCompraComponent, {
-  height: 'auto',
-  width: '50%',
-  data: { totalPagar: this.total }
-  
+      height: 'auto',
+      width: '50%',
+      data: { totalPagar: this.total }
+
     });
   }
 

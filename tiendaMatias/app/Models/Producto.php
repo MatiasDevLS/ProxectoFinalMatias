@@ -24,6 +24,7 @@ class Producto extends Model
         'precio' => 'decimal:2', //  2 decimales
     ];
 
+    // Condición Foreign key, la idTipo pertenece a Tipo
     public function tipo(): BelongsTo
     {
         return $this->belongsTo(Tipo::class, 'idTipo');
