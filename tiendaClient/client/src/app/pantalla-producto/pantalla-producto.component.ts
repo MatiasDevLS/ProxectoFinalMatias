@@ -3,6 +3,7 @@ import { ProductosService } from '../services/ProductoService/productos.service'
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CartaProductoComponent } from '../carta-producto/carta-producto.component';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { TiposService } from '../services/TiposService/tipos.service';
 
 @Component({
   selector: 'app-pantalla-producto',
@@ -13,13 +14,19 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 export class PantallaProductoComponent implements OnInit {
   producto!: any
   productosAleatorios!: any[]
+  tipo!: any
 
-  constructor(public productosService: ProductosService, private route: ActivatedRoute, private snackBar: MatSnackBar,private router: Router ) { }
+  constructor(public productosService: ProductosService, public tiposService: TiposService, private route: ActivatedRoute, private snackBar: MatSnackBar,private router: Router ) { }
 
   ngOnInit(): void {
     let productoId = this.route.snapshot.paramMap.get('id');
     this.productosService.getProducto(productoId!).subscribe({
-      next: (respond: any) => this.producto = respond
+      next: (respond: any) =>{
+        this.producto = respond
+        this.tiposService.getTipo(respond.id).subscribe({
+          next: (valor:any) => this.tipo = valor
+        })
+      } 
     });
     this.productosService.getProductosAleatorios(productoId!).subscribe({
       next: (respond: any) => this.productosAleatorios = respond

@@ -1,20 +1,6 @@
 @extends('layouts.inicio')
 
 @section('contenido')
-<div>
-    <div>
-        <a href="registroTipo">
-            <button>
-                Añadir
-            </button>
-        </a>
-    </div>
-        <div>
-        <a href="editarTipo">
-            <button>
-                Editar
-            </button>
-        </a>
-    </div>
-</div>
+<center><h3 style="color: red;margin-top:15px">Ups. Parece que algo malo ha ocurrido tras intentar subir el anterior Tipo </h3></center>
+
 @endsection

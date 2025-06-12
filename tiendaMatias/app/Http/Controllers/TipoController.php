@@ -21,8 +21,12 @@ class TipoController extends Controller
 
     public function Post(Request $request)
     {
-        Tipo::create($request->all());
-        return  view('Tipos.registroTipo');;
+        try {
+            Tipo::create($request->all());
+             return redirect()->back();
+        } catch (\Throwable $th) {
+            return view('Tipos.gestionTipo');
+        }
     }
 
     public function GetEditarData(int $id)
@@ -58,19 +62,16 @@ class TipoController extends Controller
 
 
 
-        public function ExportarTodo()
+    public function ExportarTodo()
     {
         return $tipos = Tipo::all();
     }
 
-    public function ExportarProducto(int $id)
+    public function ExportarTipo(int $id)
     {
 
         $tipo = Tipo::find($id);
 
         return $tipo;
     }
-
-
-   
 }

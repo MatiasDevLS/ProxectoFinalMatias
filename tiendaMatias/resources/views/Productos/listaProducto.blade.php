@@ -12,12 +12,13 @@
                 <th>Precio</th>
                 <th>Tipo</th>
             </thead>
-            @foreach ($productos as $producto)
+            @foreach ($productoDtos as $producto)
             <tr>
                 <td><img src="{{$producto->imagenUrl}}"></td>
                 <td>{{$producto->id}}</td>
                 <td>{{$producto->nombre}}</td>
                 <td>{{$producto->precio}}€</td>
+                <td>{{$producto->tipoNombre}}</td>
             </tr>
             @endforeach
         </table>

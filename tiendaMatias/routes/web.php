@@ -105,4 +105,4 @@ Route::get('/exportarProductosCategoria/{id}', [ProductoController::class,'Expor
 
 
 Route::get('/exportarTodoTipo', [TipoController::class,'ExportarTodo']);
-Route::get('/exportarTipo/{id}', [TipoController::class,'ExportarProducto']);
+Route::get('/exportarTipo/{id}', [TipoController::class,'ExportarTipo']);

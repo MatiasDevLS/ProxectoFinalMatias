@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
+
+use App\Models\ProductoDto; 
 use App\Models\Tipo;
+use Illuminate\Validation\ValidationException;
 
 class ProductoController extends Controller
 {
@@ -15,8 +18,21 @@ class ProductoController extends Controller
         if ($check) {
             return $check;
         }
+        $tipos = Tipo::all()->keyBy('id'); // keyBy para acceso rápido
         $productos = Producto::all();
-        return view('Productos.listaProducto', compact('productos'));
+
+        // Guardar en array de DTOs
+        $productoDtos = [];
+
+        foreach ($productos as $producto) {
+            $tipoNombre = Tipo::find($producto->idTipo)->tipo ?? 'Tipo desconocido';
+
+            $dto = new ProductoDto();
+            $dto = $dto->fromProducto($producto,$tipoNombre);
+            $productoDtos[] = $dto;
+        }
+
+        return view('Productos.listaProducto', compact('productoDtos'));
     }
 
     public function GetGestion()
@@ -44,10 +60,33 @@ class ProductoController extends Controller
     }
     public function Post(Request $request)
     {
+        try {
+            // 1. Validar los datos de la petición
+            // Laravel automáticamente redirige hacia atrás con los errores si falla la validación
+            $validatedData = $request->validate([
+                'nombre' => 'required|string', 
+                'precio' => 'required|numeric', 
+                'imagenUrl' => 'required|string', 
+                'descripcion' => 'required|string', 
+                'idTipo' => 'required|numeric'
 
-        Producto::create($request->all());
+            ]);
 
-        return 'Respuesta valida';
+            // Con $validatedData, solo se usan las columnas especificadas
+            Producto::create($validatedData);
+
+            
+            return redirect()->back()->with('success', 'Producto creado exitosamente!');
+
+        } catch (ValidationException $e) {
+
+            return view('Productos.gestionProducto');
+
+        } catch (\Throwable $th) {
+
+            return view('Productos.gestionProducto');
+        }
+
     }
 
     public function Update(Request $request, $id)
@@ -84,8 +123,12 @@ class ProductoController extends Controller
 
         $producto = Producto::find($id);
 
+
         return $producto;
     }
+
+    
+  
 
 
     public function ExportarAleatorio($id)
@@ -96,8 +139,8 @@ class ProductoController extends Controller
             ->get();
     }
 
-       public function ExportarProductosCategoria($id)
+    public function ExportarProductosCategoria($id)
     {
-         return $productos = Producto::where('idTipo', $id)->get();;
+        return $productos = Producto::where('idTipo', $id)->get();;
     }
 }
